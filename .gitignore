@@ -1,0 +1,37 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# ASP.NET secrets
+secrets.json
+
+# Logs
+*.log
+
+# HTTP request files (optional if you want to exclude them)
+*.http
+
+# Environment files
+.env
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# OS-specific
+.DS_Store
+Thumbs.db
