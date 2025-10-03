@@ -1,0 +1,196 @@
+### GET all users (valid token)
+GET http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+###
+
+### GET all users (missing token)
+GET http://localhost:5282/users
+Content-Type: application/json
+
+###
+
+### GET all users (invalid token)
+GET http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer wrong-token
+
+###
+
+###  POST a new user (valid case)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "JohnDoe",
+    "UserAge": 33
+}
+
+###
+
+### POST a new user (missing token)
+POST http://localhost:5282/users
+Content-Type: application/json
+
+{
+    "Username": "JohnDoe",
+    "UserAge": 33
+}
+
+###
+
+### POST a new user (invalid token)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer wrong-token
+
+{
+    "Username": "JohnDoe",
+    "UserAge": 33
+}
+
+###
+
+###  POST a new user (missing Username)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "UserAge": 25
+}
+
+###
+
+### POST a new user (missing UserAge)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "JaneDoe"
+}
+
+###
+
+### POST a new user (negative UserAge)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "NegativeAgeUser",
+    "UserAge": -5
+}
+
+###
+
+### POST a new user (duplicate Username)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "JohnDoe",
+    "UserAge": 40
+}
+
+###
+
+### GET a specific user by ID (valid case)
+GET http://localhost:5282/users/2
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+###
+
+### GET a specific user by ID (non-existent ID)
+GET http://localhost:5282/users/999
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+###
+
+### PUT to update an existing user (valid case)
+PUT http://localhost:5282/users/1
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "NewJohnDoe",
+    "UserAge": 35
+}
+
+###
+
+### PUT to update an existing user (missing Username)
+PUT http://localhost:5282/users/2
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "UserAge": 36
+}
+
+###
+
+### PUT to update an existing user (missing UserAge)
+PUT http://localhost:5282/users/1
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "NewJohnDoe"
+}
+
+###
+
+### PUT to update an existing user (negative UserAge)
+PUT http://localhost:5282/users/1
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "UpdatedJohnDoe",
+    "UserAge": -10
+}
+
+###
+
+### PUT to update an existing user (non-existent ID)
+PUT http://localhost:5282/users/999
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "NonExistentUser",
+    "UserAge": 30
+}
+
+###
+
+### DELETE a user by ID (valid case)
+DELETE http://localhost:5282/users/3
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+###
+
+### DELETE a user by ID (non-existent ID)
+DELETE http://localhost:5282/users/999
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+###
+
+### POST a new user (reuse deleted Username)
+POST http://localhost:5282/users
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "Username": "UpdatedJohnDoe",
+    "UserAge": 30
+}
